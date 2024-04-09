@@ -2,6 +2,8 @@
 
 import { createStore } from 'vuex';
 import axios from 'axios';
+import { localStoragePlugin } from './localStorage';
+
 
 export default createStore({
   state: {
@@ -50,5 +52,6 @@ export default createStore({
         console.error('Favori film kaldırılırken bir hata oluştu:', error);
       }
     }
-  }
+  },
+  plugins: [localStoragePlugin]
 });
