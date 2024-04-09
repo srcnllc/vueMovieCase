@@ -12,7 +12,10 @@
         <span>{{ movie.popularity }}</span>
       </div>
     </div>
-    <div class="fav"></div>
+   <div class="fav" @click="favMovie(movie.id)">
+    <img v-if="isFavorited(movie.id)" class="fav-icon" src="@/assets/favIconFilled.svg" alt="Favori" />
+    <img v-else class="fav-icon" src="@/assets/favIcon.svg" alt="Favori" />
+  </div>
   </div>
 
 </template>
@@ -26,10 +29,20 @@ export default {
       required: true
     }
   },
-    methods:{ 
+  computed: {
+  isFavorited() {
+    return (movieId) => {
+      return this.$store.state.favoriteMovies.some(favoriteMovie => favoriteMovie.id === movieId);
+    };
+  }
+},
+  methods:{ 
     movie_detail(id){
         this.$router.push('/movie/'+id)
-    }
+    },
+       favMovie(movieId) {
+      this.$store.dispatch('favMovie', movieId);
+    },
   }
 };
 </script>
@@ -41,9 +54,6 @@ export default {
   font-size: 24px;
   letter-spacing: -1px;
 }
-
-
-
 .movie {
   overflow: hidden;
   cursor: pointer;
@@ -56,16 +66,13 @@ export default {
   justify-content: space-between;
   text-decoration: none;
 }
-
 .movie:hover {
   z-index: 9;
   transform: scale(1.07);
 }
-
 .movie img {
   width: 100%;
 }
-
 .movie .name {
   z-index: 5555;
   margin-inline: 5px;
@@ -75,7 +82,6 @@ export default {
   font-weight: bold;
   padding-block: 5px;
 }
-
 .movie .info {
   display: flex;
   justify-content: space-between;
@@ -103,10 +109,14 @@ export default {
   height: 35px;
   border-radius: 50%;
   position: absolute;
-  top: 2px;
+  top: 5px;
   right: 2px;
   z-index: 999;
-  background: red;
 }
-
+.movie .fav .fav-icon{
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  fill: red;
+}
 </style>

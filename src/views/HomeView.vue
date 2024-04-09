@@ -3,7 +3,7 @@
         <div class='moviesSection'>
         <h3 class="title">POPULAR FİLMS</h3>
     <div v-if="topRatedMovies.length > 0" class="movies">
-      <div v-for="movie in topRatedMovies" :key="movie.id" >
+      <div v-for="movie in topRatedMovies" :key="movie.id" class="movieFor">
         <MovieCard :movie="movie" />
       </div>
     </div>
@@ -31,6 +31,10 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   grid-auto-rows: auto;
   gap: 24px;
+}
+.movieFor{
+  display: flex;
+  align-self: stretch;
 }
 </style>
 <script>

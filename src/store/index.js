@@ -7,11 +7,15 @@ export default createStore({
   state: {
     api_key: process.env.VUE_APP_KEY,
     ApiURL: 'https://api.themoviedb.org/3',
+    favoriteMovies: [],
     posts: []
   },
   mutations: {
     setPosts(state, data) {
       state.posts = data;
+    },
+    addFavoriteMovie(state, movie) {
+      state.favoriteMovies.push(movie);
     }
   },
   actions: {
@@ -22,6 +26,18 @@ export default createStore({
         console.log("ne geldi",response.data.results);
       } catch (error) {
         console.error('API isteği başarısız:', error);
+      }
+    },
+    async favMovie({ commit, state }, movieId) {
+      try {
+        // Favori film listesine eklenecek filmi bul
+        const movieToAdd = state.posts.find(movie => movie.id === movieId);
+        // Eğer film favori film listesinde yoksa, ekle
+        if (!state.favoriteMovies.some(movie => movie.id === movieToAdd.id)) {
+          commit('addFavoriteMovie', movieToAdd);
+        }
+      } catch (error) {
+        console.error('Favori film eklenirken bir hata oluştu:', error);
       }
     }
   }
