@@ -5,12 +5,9 @@
           VUE-NETFILMS
         </router-link>
         <nav class='navigation-menu'>
-            <!-- <router-link to="/">Ana Sayfa</router-link> |
-            <router-link to="/fav">Favoriler</router-link> -->
             <router-link to="/" :class="{'router-link-active': $route.path === '/' }">Ana Sayfa</router-link> |
             <router-link to="/fav" :class="{ 'router-link-active': $route.path === '/fav' }">Favoriler</router-link>
-
-            <input type="text" v-model="searchTerm" @input="emitSearch" placeholder="Ara...">
+            <input type="text" placeholder="Ara..." v-model="searchTerm" @input="filterPosts" />
         </nav>
       </div>
     </header>
@@ -24,8 +21,11 @@ export default {
     };
   },
   methods: {
-    emitSearch() {
-      this.$emit('search', this.searchTerm);
+    filterPosts() {
+      const filteredPosts = this.$store.state.posts.filter(post =>
+        post.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+      this.$store.commit('setFilteredPosts', filteredPosts); 
     }
   }
 };
