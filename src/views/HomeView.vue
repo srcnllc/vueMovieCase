@@ -1,7 +1,7 @@
 <template>
   <div class="home">
         <div class='moviesSection'>
-        <h3 class="title">POPULAR FİLMS</h3>
+        <h3 class="title">POPÜLER FİLMLER</h3>
     <div v-if="topRatedMovies.length > 0" class="movies">
       <div v-for="movie in topRatedMovies" :key="movie.id" class="movieFor">
         <MovieCard :movie="movie" />

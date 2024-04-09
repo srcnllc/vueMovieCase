@@ -16,6 +16,9 @@ export default createStore({
     },
     addFavoriteMovie(state, movie) {
       state.favoriteMovies.push(movie);
+    },
+    removeFavoriteMovie(state, movieId) {
+      state.favoriteMovies = state.favoriteMovies.filter(movie => movie.id !== movieId);
     }
   },
   actions: {
@@ -38,6 +41,13 @@ export default createStore({
         }
       } catch (error) {
         console.error('Favori film eklenirken bir hata oluştu:', error);
+      }
+    },
+    async removeFavMovie({ commit }, movieId) {
+      try {
+        commit('removeFavoriteMovie', movieId);
+      } catch (error) {
+        console.error('Favori film kaldırılırken bir hata oluştu:', error);
       }
     }
   }

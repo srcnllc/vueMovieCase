@@ -12,9 +12,9 @@
         <span>{{ movie.popularity }}</span>
       </div>
     </div>
-   <div class="fav" @click="favMovie(movie.id)">
-    <img v-if="isFavorited(movie.id)" class="fav-icon" src="@/assets/favIconFilled.svg" alt="Favori" />
-    <img v-else class="fav-icon" src="@/assets/favIcon.svg" alt="Favori" />
+   <div class="fav">
+    <img v-if="isFavorited(movie.id)" class="fav-icon" src="@/assets/favIconFilled.svg" alt="Favori" @click="removeFavMovie(movie.id)" />
+    <img v-else class="fav-icon" src="@/assets/favIcon.svg" alt="Favori"  @click="favMovie(movie.id)" />
   </div>
   </div>
 
@@ -43,6 +43,9 @@ export default {
        favMovie(movieId) {
       this.$store.dispatch('favMovie', movieId);
     },
+  removeFavMovie(movieId) {
+    this.$store.dispatch('removeFavMovie', movieId);
+  }
   }
 };
 </script>

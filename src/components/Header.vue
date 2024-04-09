@@ -1,12 +1,15 @@
 <template>
     <header class='app-header container fluid'>
       <div class='header-wrapper'>
-        <a href='/' class='logo'>
-          NETFILMS
-        </a>
+        <router-link to="/" class='logo'>
+          VUE-NETFILMS
+        </router-link>
         <nav class='navigation-menu'>
-            <router-link to="/">Ana Sayfa</router-link> |
-            <router-link to="/fav">Favoriler</router-link>
+            <!-- <router-link to="/">Ana Sayfa</router-link> |
+            <router-link to="/fav">Favoriler</router-link> -->
+            <router-link to="/" :class="{'router-link-active': $route.path === '/' }">Ana Sayfa</router-link> |
+            <router-link to="/fav" :class="{ 'router-link-active': $route.path === '/fav' }">Favoriler</router-link>
+
             <input type="text" v-model="searchTerm" @input="emitSearch" placeholder="Ara...">
         </nav>
       </div>
@@ -46,7 +49,7 @@ export default {
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -1px;
-  color: #fafafa;
+  color: #fafafa !important;
   text-decoration: none;
 }
 
@@ -74,7 +77,10 @@ export default {
   outline: none;
   border: 1px solid #fafafa;
 }
-
+.router-link-active{
+  color: #000 !important;
+  font-weight: bold;
+}
 .container {
   display: grid;
   grid-template-columns: 1fr min(1440px, 94%) 1fr;
