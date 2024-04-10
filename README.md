@@ -1,6 +1,5 @@
 # movie_case
 
-## Project setup
+## Project Api
 ```
-npm install
-```
+API: https://developers.themoviedb.org/3/getting-started/introduction```
