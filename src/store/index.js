@@ -39,9 +39,7 @@ export default createStore({
     },
     async favMovie({ commit, state }, movieId) {
       try {
-        // Favori film listesine eklenecek filmi bul
         const movieToAdd = state.posts.find(movie => movie.id === movieId);
-        // Eğer film favori film listesinde yoksa, ekle
         if (!state.favoriteMovies.some(movie => movie.id === movieToAdd.id)) {
           commit('addFavoriteMovie', movieToAdd);
         }

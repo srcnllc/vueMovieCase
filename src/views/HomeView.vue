@@ -27,8 +27,7 @@ computed: {
       return this.$store.state.searchTerm;
     },
       filteredMovies() {
-    const searchTerm = this.searchTerm.toLowerCase(); // Arama terimini küçük harfe çevir
-    // Arama terimine göre filtreleme yap
+    const searchTerm = this.searchTerm.toLowerCase();
     return this.topRatedMovies.filter(movie =>
       movie.title.toLowerCase().includes(searchTerm)
     );

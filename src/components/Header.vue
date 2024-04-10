@@ -9,7 +9,6 @@
             <router-link to="/" :class="{'router-link-active': $route.path === '/' }">Ana Sayfa</router-link> |
             <router-link to="/fav" :class="{ 'router-link-active': $route.path === '/fav' }">Favoriler</router-link>
           </div>
-
             <input type="text" placeholder="Ara..." v-model="searchTerm" @input="updateSearchTerm" />
         </nav>
       </div>
