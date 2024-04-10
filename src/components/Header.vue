@@ -5,8 +5,11 @@
           VUE-NETFILMS
         </router-link>
         <nav class='navigation-menu'>
+          <div class="router">
             <router-link to="/" :class="{'router-link-active': $route.path === '/' }">Ana Sayfa</router-link> |
             <router-link to="/fav" :class="{ 'router-link-active': $route.path === '/fav' }">Favoriler</router-link>
+          </div>
+
             <input type="text" placeholder="Ara..." v-model="searchTerm" @input="updateSearchTerm" />
         </nav>
       </div>
@@ -91,5 +94,16 @@ export default {
 .container > .fluid {
   grid-column: 1 / -1;
 }
-
+@media screen and (max-width: 768px) {
+  .app-header .header-wrapper {
+  flex-direction: column;
+  gap: 25px;
+}
+.app-header .header-wrapper .navigation-menu {
+  flex-direction: column;
+}
+.container {
+  grid-template-rows: 96px auto 50px;
+}
+}
 </style>

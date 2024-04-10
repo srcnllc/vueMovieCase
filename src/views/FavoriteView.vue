@@ -48,4 +48,19 @@ export default {
   display: flex;
   align-self: stretch;
 }
+@media screen and (max-width: 1024px) {
+    .favoriteMovies {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media screen and (max-width: 768px) {
+    .favoriteMovies {
+      grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: 480px) {
+    .favoriteMovies {
+      grid-template-columns: 1fr;
+    }
+}
 </style>
