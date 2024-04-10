@@ -1,24 +1,7 @@
 # movie_case
+PIXSelect Vue.js Case Çalışması
+Movie Dashboard; aşağıdaki API aracılığıyla filmlerin listeleneceği ve detaylarını görülebileceği bir 
+web uygulaması.
+## Project Api
+API: https://developers.themoviedb.org/3/getting-started/introduction
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
