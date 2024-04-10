@@ -56,7 +56,6 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
 .movieWrapper {
   max-width: 1440px;
   width: 100%;
@@ -67,24 +66,20 @@ export default {
   gap: 24px;
   margin-bottom: 56px;
 }
-
 .movieWrapper .moviePoster {
   width: 500px;
   height: 700px;
 }
-
 .movieWrapper .moviePoster img {
   width: 100%;
   height: 100%;
 }
-
 .movieWrapper .desc {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-
 .movieWrapper .desc .button .playButton {
   display: flex;
   align-items: center;
@@ -100,21 +95,42 @@ export default {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-
 .movieWrapper .desc .button .playButton:hover {
   background-color: #222;
   border: 1px solid #eee;
   color: #eee;
 }
-
 .movieTitle {
   font-size: 42px;
   text-transform: uppercase;
   text-align: center;
 }
-
 .overview {
   font-size: 24px;
 }
-
+@media screen and (max-width: 1024px) {
+.movieWrapper{
+  flex-direction: column;
+  align-items: center;
+}
+.movieWrapper .moviePoster {
+  width: 500px;
+  height: auto;
+}
+.movieTitle {
+  font-size: 30px;
+}
+.overview {
+  font-size: 22px;
+}
+.movieWrapper .desc .button .playButton{
+  width: 100%;
+}
+}
+@media screen and (max-width: 768px) {
+.movieWrapper .moviePoster {
+  width: 100%;
+  height: auto;
+}
+}
 </style>
