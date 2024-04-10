@@ -2,8 +2,8 @@
   <div class="home">
         <div class='moviesSection'>
         <h3 class="title">POPÜLER FİLMLER</h3>
-    <div v-if="topRatedMovies.length > 0" class="movies">
-      <div v-for="movie in topRatedMovies" :key="movie.id" class="movieFor">
+    <div v-if="filteredMovies.length > 0" class="movies">
+      <div v-for="movie in filteredMovies" :key="movie.id" class="movieFor">
         <MovieCard :movie="movie" />
       </div>
     </div>
@@ -46,7 +46,17 @@ export default {
 computed: {
     topRatedMovies() {
       return this.$store.state.posts;
-    }
+    },
+        searchTerm() {
+      return this.$store.state.searchTerm;
+    },
+      filteredMovies() {
+    const searchTerm = this.searchTerm.toLowerCase(); // Arama terimini küçük harfe çevir
+    // Arama terimine göre filtreleme yap
+    return this.topRatedMovies.filter(movie =>
+      movie.title.toLowerCase().includes(searchTerm)
+    );
+  }
   },
   created() {
     this.$store.dispatch('fetchPosts');

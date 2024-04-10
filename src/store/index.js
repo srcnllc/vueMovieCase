@@ -11,6 +11,8 @@ export default createStore({
     ApiURL: 'https://api.themoviedb.org/3',
     favoriteMovies: [],
     posts: [],
+    searchTerm: ''
+
   },
   mutations: {
     setPosts(state, data) {
@@ -21,6 +23,9 @@ export default createStore({
     },
     removeFavoriteMovie(state, movieId) {
       state.favoriteMovies = state.favoriteMovies.filter(movie => movie.id !== movieId);
+    },
+    setSearchTerm(state, term) {
+      state.searchTerm = term;
     }
   },
   actions: {

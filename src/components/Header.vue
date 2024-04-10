@@ -7,25 +7,22 @@
         <nav class='navigation-menu'>
             <router-link to="/" :class="{'router-link-active': $route.path === '/' }">Ana Sayfa</router-link> |
             <router-link to="/fav" :class="{ 'router-link-active': $route.path === '/fav' }">Favoriler</router-link>
-            <input type="text" placeholder="Ara..." v-model="searchTerm" @input="filterPosts" />
+            <input type="text" placeholder="Ara..." v-model="searchTerm" @input="updateSearchTerm" />
         </nav>
       </div>
     </header>
 </template>
 <script>
 export default {
-  name: "AppHeader", // Bileşen adı değiştirildi
+  name: "AppHeader",
   data() {
     return {
       searchTerm: ''
     };
   },
   methods: {
-    filterPosts() {
-      const filteredPosts = this.$store.state.posts.filter(post =>
-        post.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-      this.$store.commit('setFilteredPosts', filteredPosts); 
+    updateSearchTerm() {
+      this.$store.commit('setSearchTerm', this.searchTerm);
     }
   }
 };
